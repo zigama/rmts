@@ -1,0 +1,56 @@
+@(title: String)(userForm: Form[User])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main(title) {
+    
+    <h1>Add a user</h1>
+    
+    @form(routes.Users.save()) {
+        
+         @if(userForm.hasErrors) {
+		    <p class="error">
+		        <ul>
+		        	@userForm.errors.map { case(key, value) =>
+		        		
+		        		<li style="color:#9d261d;"> @key : @value.map { v => @v.message }   </li>
+		        	}
+		        </ul>
+		    </p>
+		}
+		
+        <fieldset>
+        
+            @inputText(userForm("email"), '_label -> "Email")
+            @inputPassword(userForm("password"), '_label -> "Password")
+            <div class="clearfix  " id="repeatPassword_field">
+			    <label for="repeatPassword">Repeat password</label>
+			    <div class="input">
+
+			    <input type="password" id="repeatPassword" name="repeatPassword" value="@userForm("password").value">
+
+			        <span class="help-inline"></span>
+			        <span class="help-block">Please repeat your password again.</span> 
+			    </div>
+			</div>
+            @inputText(userForm("fullname"), '_label -> "Fullname") 
+            
+            @select(
+                userForm("userGroup.id"), 
+                options(UserGroup.options), 
+                '_label -> "UserGroup", '_default -> "-- Choose a group --",
+                '_showConstraints -> false
+            )           
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this user" class="btn primary"> or 
+            <a href="@routes.Users.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}

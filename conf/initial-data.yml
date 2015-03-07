@@ -1,0 +1,55 @@
+
+# Users and Groups
+#https://www.playframework.com/documentation/2.2.x/JavaWS
+
+groups:
+
+    - !!models.UserGroup
+        title:      Super Administrator
+        shortTitle:   superadmin
+
+    - !!models.UserGroup
+        title:      System Tester
+        shortTitle:   tester
+
+
+
+users:
+
+    - !!models.User
+        email:      test@sample.com
+        fullname:   Test
+        password:   secret
+    
+    - !!models.User
+        email:      d.zigama@pivotaccess.com
+        fullname:   Didier Zigama
+        password:   1234567890
+
+    - !!models.User
+        email:      v.umutoni@pivotaccess.com
+        fullname:   Vanessa Umutoni
+        password:   1234567890
+
+    - !!models.User
+        email:      k.maurice@pivotaccess.com
+        fullname:   Maurice Kagame
+        password:   1234567890
+
+
+    - !!models.User
+        email:      didier@rbc.gov.rw
+        fullname:   Didier RBC
+        password:   1234567890
+
+    - !!models.User
+        email:      rukundo@rbc.gov.rw
+        fullname:   Rukundo Emmanuel 
+        password:   1234567890
+
+    - !!models.User
+        email:      colini@rbc.gov.rw
+        fullname:   Dr Colini
+        password:   1234567890
+
+

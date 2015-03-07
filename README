@@ -2,33 +2,3 @@ This is your new Play application
 =====================================
 
 This file will be packaged with your application, when using `play dist`.
-
-
-PROJECT SETUP
-=============
-
-1. Download and unzip play-2.2.6.zip in folder with full privilegies
-
-2. Edit .bashrc file and add play to the path, like: 
-
-	PATH=$PATH:$HOME/src/java/play-2.2.6
-
-3. Go projects directory and create an new application:
-
-	play new rmts
-
-4. Go the the application directory:
-
-	cd rmts
-
-5. Run play console:
-
-	play
-
-6. Setup the project to run in your favorite IDE, like Eclipse:
-
-	eclipse
-
-7. Import your project into eclipse.
-
-

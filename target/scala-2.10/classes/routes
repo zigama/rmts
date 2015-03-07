@@ -2,8 +2,34 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+
 # Home page
 GET     /                           controllers.Application.index()
+
+#Authentication           
+GET     /login                  controllers.Application.login()
+POST    /login                  controllers.Application.authenticate()
+GET     /logout                 controllers.Application.logout()
+
+# Users list (look at the default values for pagination parameters)
+GET     /users                  controllers.Users.list(p:Int ?= 0, s ?= "email", o ?= "asc", f ?= "")
+
+
+# Add user
+GET     /users/new              controllers.Users.create()
+POST    /users                  controllers.Users.save()
+
+# Edit existing user
+GET     /users/:id              controllers.Users.edit(id:Long)
+POST    /users/:id              controllers.Users.update(id:Long)
+
+# Delete a user
+POST    /users/:id/delete       controllers.Users.delete(id:Long)
+
+#Malaria Case
+GET		/cases/new				controllers.MalariaCases.create()
+POST	/cases					controllers.MalariaCases.save()
+GET     /cases                  controllers.MalariaCases.list(p:Int ?= 0, s ?= "id", o ?= "asc", f ?= "")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

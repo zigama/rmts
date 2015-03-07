@@ -1,0 +1,88 @@
+@(title: String)(caseForm: Form[MalariaCase])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main(title) {
+    
+    <h1>Add New Malaria Notification Case</h1>
+    
+    @form(routes.MalariaCases.save()) {
+        
+         @if(caseForm.hasErrors) {
+		    <p class="error">
+		        <ul>
+		        	@caseForm.errors.map { case(key, value) =>
+		        		
+		        		<li style="color:#9d261d;"> @key : @value.map { v => @v.message }   </li>
+		        	}
+		        </ul>
+		    </p>
+		}
+		
+        <fieldset>
+        
+            
+            @inputText(caseForm("houseOfHousehold"), '_label -> "Head of Household") 
+            
+            @select(
+                caseForm("country.id"), 
+                options(Country.options), 
+                '_label -> "Country", '_default -> "-- Choose a country --",
+                '_showConstraints -> false
+            ) 
+            
+            @select(
+                caseForm("province.id"), 
+                options(Province.options), 
+                '_label -> "Province", '_default -> "-- Choose a Province --",
+                '_showConstraints -> false
+            )
+            
+                        @select(
+                caseForm("district.id"), 
+                options(District.options), 
+                '_label -> "District", '_default -> "-- Choose a District --",
+                '_showConstraints -> false
+            )      
+            
+            
+                        @select(
+                caseForm("facility.id"), 
+                options(Facility.options), 
+                '_label -> "Facility", '_default -> "-- Choose a Facility --",
+                '_showConstraints -> false
+            ) 
+            
+                        @select(
+                caseForm("sector.id"), 
+                options(Sector.options), 
+                '_label -> "Sector", '_default -> "-- Choose a Sector --",
+                '_showConstraints -> false
+            )
+            
+                        @select(
+                caseForm("cell.id"), 
+                options(Cell.options), 
+                '_label -> "Cell", '_default -> "-- Choose a Cell --",
+                '_showConstraints -> false
+            )
+            
+                        @select(
+                caseForm("village.id"), 
+                options(Village.options), 
+                '_label -> "Village", '_default -> "-- Choose a Village --",
+                '_showConstraints -> false
+            )                                        
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this case" class="btn primary"> or 
+            <a href="@routes.MalariaCases.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}

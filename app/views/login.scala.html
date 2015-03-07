@@ -1,0 +1,53 @@
+@(form: Form[Application.Login])
+@import play.i18n._
+
+<html>
+    <head>
+         <title>@Messages.get("RBC -OPD Division - Malaria Tarcking & Surveillance System")</title>
+    <link rel="icon" type="image/png" href="@routes.Assets.at("bootstrap/img/logo.png")" />
+    <link href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@routes.Assets.at("bootstrap/font-awesome/css/font-awesome.css")" rel="stylesheet">
+    <link href="@routes.Assets.at("bootstrap/css/animate.css")" rel="stylesheet">
+    <link href="@routes.Assets.at("bootstrap/css/style.css")" rel="stylesheet">
+    </head>
+    <body class="gray-bg">
+ <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                 <img src="@routes.Assets.at("bootstrap/img/logo.png")"/>
+            </div>
+            <div>
+            	<p></br></br>
+            	<h3 id=""> Malaria Tarcking & Surveillance System </h3>
+            	</br></br>
+            	</p>
+            </div>
+             @helper.form(routes.Application.authenticate) {
+@if(flash.contains("error")) {
+    <p class="success">
+        @flash.get("error")
+    </p>
+}
+@if(flash.contains("success")) {
+    <p class="success">
+        @flash.get("success")
+    </p>
+}
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email" value="@form("email").value" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control"  name="password" placeholder="Password" required="">
+                </div>
+             <!--   <button type="submit" class="btn btn-primary block full-width m-b">Login</button> -->
+                 <button type="submit" class="btn btn-w-m btn-success full-width m-b">@Messages.get("login")</button>
+
+                
+            }
+            <p class="m-t"> <small>@Messages.get("RBC")  &copy; @Messages.get("2015")</small> </p>
+        </div>
+    </div>
+    <script src="@routes.Assets.at("bootstrap/js/jquery-2.1.1.js")"></script>
+    <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")"></script>
+    </body>
+</html>

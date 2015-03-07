@@ -20,36 +20,48 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object index extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[String,play.api.templates.HtmlFormat.Appendable] {
+object index extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(message: String):play.api.templates.HtmlFormat.Appendable = {
+    def apply():play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*1.19*/("""
+Seq[Any](_display_(Seq[Any](/*2.2*/main("Welocome Page")/*2.23*/ {_display_(Seq[Any](format.raw/*2.25*/("""
+    
+    
+     <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                 
+                    <div class="ibox-content">
 
-"""),_display_(Seq[Any](/*3.2*/main("Welcome to Play")/*3.25*/ {_display_(Seq[Any](format.raw/*3.27*/("""
 
-    """),_display_(Seq[Any](/*5.6*/play20/*5.12*/.welcome(message, style = "Java"))),format.raw/*5.45*/("""
-
-""")))})),format.raw/*7.2*/("""
+                    </div>
+                </div>
+            </div>
+    
+    
+               
+            
+    
+    
+""")))})),format.raw/*20.2*/("""
 """))}
     }
     
-    def render(message:String): play.api.templates.HtmlFormat.Appendable = apply(message)
+    def render(): play.api.templates.HtmlFormat.Appendable = apply()
     
-    def f:((String) => play.api.templates.HtmlFormat.Appendable) = (message) => apply(message)
+    def f:(() => play.api.templates.HtmlFormat.Appendable) = () => apply()
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Mon Feb 16 13:10:02 CAT 2015
-                    SOURCE: /home/zigama/projects/java/rmts/app/views/index.scala.html
-                    HASH: c1c7a8094ff6fdf7b189be1a11ff9a14918bbdfd
-                    MATRIX: 774->1|885->18|922->21|953->44|992->46|1033->53|1047->59|1101->92|1134->95
-                    LINES: 26->1|29->1|31->3|31->3|31->3|33->5|33->5|33->5|35->7
+                    DATE: Wed Mar 04 09:30:04 CAT 2015
+                    SOURCE: /home/zigama/workspace/rmts/app/views/index.scala.html
+                    HASH: e2d866a929c0245d13e7d5416b1cb283b71b9078
+                    MATRIX: 864->2|893->23|932->25|1240->302
+                    LINES: 29->2|29->2|29->2|47->20
                     -- GENERATED --
                 */
             

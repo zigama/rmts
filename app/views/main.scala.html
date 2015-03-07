@@ -1,15 +1,54 @@
 @(title: String)(content: Html)
-
+@import play.i18n._
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <title>RBC -OPD Division Malaria Tracking & Surveillance System - Home Page</title>
+       <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")"> 
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")"> 
+    	<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/datepicker.css")" >
+    	 
+    	 <script src="@routes.Assets.at("bootstrap/js/jquery-2.1.1.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap-datepicker.js")" type="text/javascript"></script>
+        
+
+		<script type="text/javascript" charset="utf-8">
+         	$(function() {
+					        $("#dob").datepicker({format:'yyyy-mm-dd'});
+					    });
+        </script>
     </head>
     <body>
-        @content
+        
+        <header class="topbar">
+            <h1 class="fill"> <span> <img height="80px" width="250px" src="@routes.Assets.at("bootstrap/img/logo.png")" /></span>
+                <span class="tab"> <a href="@routes.Application.index()">
+                    OPD Division &mdash; Malaria Tracking &amp; Surveillance System &mdash; Dashboard
+                </a>
+               </span>
+               <div style="position:top; float:right; padding: 0px 0px 0px 0px;">
+               	<span >
+               		<a href="@routes.Application.logout()">
+               			<span class="btn primary">@session.get("email")
+               			</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               			@Messages.get("logout")
+               			</span>
+               			</a>
+               	</span>
+               </div>
+            </h1>
+            
+        </header>
+        
+        <section id="main">
+            @content            
+        </section>
+        
+        <section id="footer" style="background-color:#eee;">
+        	<p> <strong>Copyright</strong> RBC -OPD Division &copy; 2015 </p>
+        	<p> Developed by <strong>PIVOT ACCESS</strong> </p>
+        </section>
+        
+        
     </body>
 </html>

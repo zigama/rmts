@@ -1,0 +1,75 @@
+@(title: String)(id: Long, userForm: Form[User])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main(title) {
+    
+    <h1>Edit user</h1>
+    
+    @form(routes.Users.update(id)) {
+ 
+        @if(userForm.hasErrors) {
+		    <p class="error">
+		        <ul>
+		        	@userForm.errors.map { case(key, value) =>
+		        		
+		        		<li style="color:#9d261d;"> @key : @value.map { v => @v.message }   </li>
+		        	}
+		        </ul>
+		    </p>
+		}
+        
+        <fieldset>
+        
+            @inputText(userForm("email"), '_label -> "User Email" )
+            @inputPassword(userForm("password"), '_label -> "Password")
+            <div class="clearfix  " id="repeatPassword_field">
+			    <label for="repeatPassword">Repeat password</label>
+			    <div class="input">
+
+			    <input type="password" id="repeatPassword" name="repeatPassword" value="@userForm("password").value">
+
+			        <span class="help-inline"></span>
+			        <span class="help-block">Please repeat your password again.</span> 
+			    </div>
+			</div>
+            @inputText(userForm("fullname"), '_label -> "Fullname")           
+            
+            @inputText(userForm("dob"),
+            						'_label -> "Date Of Birth",
+            						'_id -> "dob"
+			  
+            						)
+            
+            @inputRadioGroup(
+                userForm("gender"), 
+                options(MalariaEnum.Gender.values().toList.map(_.toString)), 
+                '_label -> "Gender", '_default -> "-- Choose a Gender --",
+                '_showConstraints -> false
+            )
+           
+            @select(
+                userForm("userGroup.id"), 
+                options(UserGroup.options), 
+                '_label -> "UserGroup", '_default -> "-- Choose a group --",
+                '_showConstraints -> false
+            )
+            
+        
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Save this User" class="btn primary"> or 
+            <a href="@routes.Users.list()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+    @form(routes.Users.delete(id), 'class -> "topRight") {
+        <input type="submit" value="Delete this user" class="btn danger">
+    }
+    
+    
+}

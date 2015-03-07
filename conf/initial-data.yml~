@@ -1,0 +1,18 @@
+
+# Users and Groups
+#https://www.playframework.com/documentation/2.2.x/JavaWS
+
+groups:
+
+    - !!models.UserGroup
+        groupID:    1
+        title:      "Super Administrator"
+        shortTitle:   superadmin
+
+    - !!models.UserGroup
+        groupID:    2
+        title:      "System Tester"
+        shortTitle:   tester
+
+
+
